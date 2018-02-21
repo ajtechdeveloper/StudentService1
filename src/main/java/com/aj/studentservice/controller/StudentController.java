@@ -24,12 +24,13 @@ public class StudentController {
     @RequestMapping(value = "ping", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, String>> ping() {
 		Map<String, String> response = new HashMap<>();
-		response.put("message", "pong: 8081");
+		response.put("message", "pong: 8082");
         return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
     @RequestMapping(value = "students", method = RequestMethod.GET)
     public ResponseEntity<List<Student>> getStudents() {
+        logger.info("In StudentController.getStudents(), using port 8082, fetching list of students");
         List<Student> students = new ArrayList<>();
         students.add(new Student("P001", "Jane", "Physics"));
         students.add(new Student("C001", "Jim", "Chemistry"));
